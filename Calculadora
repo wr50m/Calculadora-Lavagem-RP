@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Percentual</title>
+    <style>
+        body {
+            background-color: #ccc;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        label, select, input {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        input[type="button"] {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .resultado {
+            margin-top: 20px;
+            background-color: #eee;
+            padding: 15px;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .resultado p {
+            font-size: 18px;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Calculadora de Percentual</h2>
+    <label for="valor">Valor Inicial:</label>
+    <input type="number" step="0.01" id="valor">
+
+    <label for="percentual">Selecione o Percentual:</label>
+    <select id="percentual">
+        <option value="15">Gerência - 15%</option>
+        <option value="20">Membro - 20%</option>
+        <option value="25">Parceria - 25%</option>
+        <option value="30">Pista - 30%</option>
+    </select>
+
+    <input type="button" value="Calcular" onclick="calcularValor()">
+
+    <div class="resultado" id="resultado">
+        <p id="sujo"></p>
+        <p id="entregue"></p>
+        <p id="fac"></p>
+        <p id="percentualInfo"></p>
+    </div>
+</div>
+
+<script>
+    function calcularValor() {
+        const valor = parseFloat(document.getElementById('valor').value);
+        const percentual = parseInt(document.getElementById('percentual').value);
+
+        if (isNaN(valor)) {
+            alert("Por favor, insira um valor válido.");
+            return;
+        }
+
+        const valorFac = valor * (percentual / 100);
+        const valorEntregue = valor - valorFac;
+
+        document.getElementById('sujo').textContent = "Valor Sujo: R$ " + valor.toFixed(2).replace('.', ',');
+        document.getElementById('entregue').textContent = "Valor Entregue: R$ " + valorEntregue.toFixed(2).replace('.', ',');
+        document.getElementById('fac').textContent = "Valor Fac: R$ " + valorFac.toFixed(2).replace('.', ',');
+        document.getElementById('percentualInfo').textContent = "Percentual: " + percentual + "%";
+
+        document.getElementById('resultado').style.display = "block";
+    }
+</script>
+
+</body>
+</html>
