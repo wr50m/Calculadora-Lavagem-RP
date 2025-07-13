@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Percentual</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+    <label for="valor">Valor Inicial:</label>
+<input type="number" id="valor" step="1" min="0" />
+
+<p>Selecione o percentual:</p>
+<div class="radio-group">
+    <label><input type="radio" name="percentual" value="15"> Gerência - 15%</label>
+    <label><input type="radio" name="percentual" value="20"> Membro - 20%</label>
+    <label><input type="radio" name="percentual" value="25"> Parceria - 25%</label>
+    <label><input type="radio" name="percentual" value="30"> Pista - 30%</label>
+</div>
+
+    <input type="button" value="Calcular" onclick="calcularValor()">
+    <input type="button" value="Baixar Resultado" onclick="baixarResultado()">
+
+    <div class="resultado" id="resultado"></div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
+
+
